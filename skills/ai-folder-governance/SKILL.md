@@ -9,11 +9,11 @@ Use the user's language for interaction. This Skill governs decisions; it does n
 
 ## Workflow
 
-1. **Activate within scope.** Name the target and refuse vague scope such as “organize everything.”
+1. **Activate within scope.** Name the target and refuse vague scope such as “organize everything.” Recursive inspection is allowed only inside the explicitly approved target.
 2. **Inspect read-only.** Build a bounded inventory before proposing a move. Load [core rules](references/core-rules.md) and [safety invariants](references/safety-invariants.md).
 3. **Discover material preferences.** Load [preference discovery](references/preference-discovery.md) only when a choice could change the result.
 4. **Select a mode.** Use [organization modes](references/organization-modes.md); never widen scope or depth silently.
-5. **Plan and ask.** Separate facts, inferences, confidence, and unresolved questions. Produce a dry-run change set with pre-conditions and post-conditions. Wait for approval before moving, renaming, archiving, overwriting, or deleting.
+5. **Plan and ask.** Separate facts, inferences, confidence, and unresolved questions. Produce a dry-run change set with pre-conditions and post-conditions. A duplicate proposal is not deletion permission. Wait for approval, and require it to be explicit and item-specific, before moving, renaming, archiving, overwriting, or deleting.
 6. **Execute narrowly.** Re-check each pre-condition, keep a change ledger, and stop on unexpected collisions, dependency uncertainty, or scope drift.
 7. **Validate and report.** Load [acceptance gates](references/acceptance-gates.md). Re-scan, verify post-conditions and out-of-scope integrity, report untouched items, and confirm that a second run is close to a no-op.
 

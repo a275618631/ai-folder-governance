@@ -2,6 +2,8 @@
 
 Prompt Pack 適用於可以檢查檔案系統、連線文件工作區或使用者提供 inventory 的 Agent。每個 Prompt 都能脫離 Skill 單獨使用。
 
+每份 Prompt 頂端都說明：實際交給 Agent 時，只需複製你要使用的語言區段。
+
 ## 選擇 Prompt
 
 | Prompt | 適用情境 |
@@ -32,3 +34,5 @@ Prompt Pack 適用於可以檢查檔案系統、連線文件工作區或使用�
 ## 審查回應
 
 好的回應應分開列出 inventory、推理與不確定性、建議 change set、驗證報告。若回應直接跳到「完成」、隱藏假設，或把檔名當作 canonical 證明，應拒絕該結果。
+
+如果 Host Runtime 沒有寫入或獨立驗證能力，Prompt 應停在 `PLAN_READY`，並說明缺少的能力。

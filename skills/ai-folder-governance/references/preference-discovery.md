@@ -24,6 +24,7 @@ delete: confirm (default)
 naming.language: keep | user-selected language
 naming.date_prefix: never | when-useful | always
 naming.style: concise | descriptive
+delete.exact_duplicates: propose (default)
 ```
 
 ## Save choice
@@ -33,3 +34,5 @@ Offer `Save preferences for this folder` or `Session only`. If saved, explain th
 ## Invalid or conflicting preferences
 
 Report unknown keys and invalid values. If preferences conflict, prefer the safer interpretation and ask before planning a materially different result. Never allow a preference to disable secret protection, scope boundaries, dependency checks, approval gates, or validation.
+
+`delete.exact_duplicates: propose` permits the agent to list candidates for review; it never authorizes deletion.

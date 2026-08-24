@@ -9,7 +9,7 @@ archive:
 
 delete:
   mode: confirm
-  exact_duplicates: allow
+  exact_duplicates: propose
 
 naming:
   language: keep

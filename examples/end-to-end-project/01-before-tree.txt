@@ -1,0 +1,14 @@
+project-meridian/
+├── README.md
+├── plan.md
+├── operating-procedure.md
+├── status-report.pdf
+├── handoff.md
+├── review-prompt.md
+├── meridian-config/
+│   └── local-settings.dat
+├── archive-2025/
+│   └── status-report.pdf
+└── notes/
+    ├── active-notes.md
+    └── links.md

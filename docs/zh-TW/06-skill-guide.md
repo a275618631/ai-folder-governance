@@ -2,6 +2,8 @@
 
 內含 Skill 是 Agent Skills 相容 Runtime 的入口。它刻意保持精簡，讓 Agent 能逐步載入必要的詳細指引。
 
+套件遵循 [Agent Skills specification](https://agentskills.io/specification)。官方格式以 `SKILL.md` 為核心，並可選擇包含 references 與 assets 等資源。
+
 ## 套件形狀
 
 ```text
@@ -33,6 +35,8 @@ skills/ai-folder-governance/
 ## Runtime 預期
 
 Skill 不假設特定提供者、Shell、檔案 API 或語言。Host Agent 必須把唯讀檢查、核准、執行與驗證翻譯成自身可用工具。如果能力不存在，應回報限制，不能假裝成功。
+
+請使用 [Runtime 能力](08-runtime-capabilities.md) 區分 `Tested`、`Designed for` 與 `Format compatible`；本 Repository 不宣稱所有 Agent 都支援。
 
 ## 測試 Skill 變更
 

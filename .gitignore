@@ -1,5 +1,6 @@
 # Local preferences and generated reports
 .ai-folder-governance.yaml
+.publication-private-denylist
 *.organization-report.md
 *.change-ledger.md
 

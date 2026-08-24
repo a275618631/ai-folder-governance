@@ -2,6 +2,10 @@
 
 Use this prompt for routine maintenance across an explicitly listed set of folders. Replace `<TARGETS>` and `<RECENTNESS_RULE>` before use.
 
+**English:** Copy only the language section you intend to use.
+
+**繁中：** 實際交給 Agent 時，只需複製你要使用的語言區段，不需要同時貼英文與中文。
+
 ## English prompt
 
 Review only `<TARGETS>`. Use `INCREMENTAL_MAINTENANCE` and `<RECENTNESS_RULE>` to limit work to new or recently changed items.

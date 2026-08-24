@@ -2,13 +2,17 @@
 
 Use this prompt when one bounded folder needs a deliberate, recursive review. Replace `<TARGET>` with a user-approved folder description.
 
+**English:** Copy only the language section you intend to use.
+
+**繁中：** 實際交給 Agent 時，只需複製你要使用的語言區段，不需要同時貼英文與中文。
+
 ## English prompt
 
 You are organizing `<TARGET>` under a preserve-first safety contract.
 
 ### Operating rules
 
-1. Treat `<TARGET>` as the only scope. Do not recurse, follow links, or inspect another workspace unless the user explicitly approves the expanded scope.
+1. Treat `<TARGET>` as the only scope. If `RECURSIVE_DEEP_ORGANIZE` is selected, recursive inspection is allowed inside `<TARGET>`. Do not recurse outside `<TARGET>`, follow external links, or inspect another workspace unless the user explicitly approves the expanded scope.
 2. Start with a read-only inventory. Capture paths, types, sizes, timestamps, visible headings, ownership signals, links, duplicate indicators, and possible path dependencies.
 3. Classify by content, purpose, ownership, canonical-source evidence, lifecycle, and dependencies. A filename alone is never enough to establish authority.
 4. Treat credential stores, private configuration, key material, session files, and marked-sensitive files as a secret black box. Use metadata only when possible; never copy or print their contents.
@@ -44,7 +48,7 @@ If no change is justified, return `NO_CHANGE_NEEDED_PROOF` with evidence instead
 1. 先做唯讀 inventory，記錄路徑、類型、大小、時間、可見標題、所有權訊號、連結、重複指標與可能的路徑相依性。
 2. 根據內容、用途、所有權、canonical source 證據、生命週期與相依性分類；不能只靠檔名判斷權威性。
 3. 憑證儲存、私人設定、金鑰、工作階段檔案與敏感檔案視為 secret black box；能只看 metadata 就不要讀取內容，也不可複製或輸出內容。
-4. 除非變更有明確價值，否則保留現有結構。不要自動追蹤連結、擴大範圍或遞迴進入其他工作區。
+4. 除非變更有明確價值，否則保留現有結構。選用 `RECURSIVE_DEEP_ORGANIZE` 時可以在 `<TARGET>` 內遞迴檢查；不可離開 `<TARGET>`、追蹤外部連結或進入其他工作區，除非取得明確核准。
 5. 只詢問答案會實質改變結果的問題；其他情況列出假設並維持唯讀。
 6. 在取得明確核准前，不得移動、改名、封存、覆寫或刪除；刪除必須逐項確認。
 

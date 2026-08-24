@@ -1,0 +1,5 @@
+# Fictional local-only terms for an optional publication scan.
+# Copy this file to .publication-private-denylist locally and replace entries
+# with private markers that must never appear in a public checkout.
+fictional-private-project
+example-internal-alias

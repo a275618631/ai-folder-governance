@@ -19,6 +19,7 @@
 | 深度 | `current`、`one-level`、`recursive` | 要求沒有明確邊界。 |
 | 封存 | `keep-in-place`、`archive`、`ask-per-item` | 舊資料或歷史資料需要生命週期判斷。 |
 | 刪除 | 預設 `confirm` | 任何刪除或覆寫被提出時。 |
+| 完全重複 | 預設 `propose` | duplicate candidate 仍需審查；提出不等於允許刪除。 |
 | 命名語言 | `keep` 或指定語言 | 確實需要改名，且語言會影響搜尋。 |
 | 日期前綴 | `never`、`when-useful`、`always` | 確實需要改名，日期可改善尋找。 |
 | 命名風格 | `concise`、`descriptive` | 確實需要改名，兩種風格都合理。 |
@@ -39,7 +40,7 @@ archive:
 
 delete:
   mode: confirm
-  exact_duplicates: allow
+  exact_duplicates: propose
 
 naming:
   language: keep
@@ -59,4 +60,5 @@ safety:
 - 無效值要停止受影響的規劃。
 - 安全 key 是斷言，不是開關；設成 false 不能停用對應不變量。
 - 偏好檔不是權威性、所有權或刪除權限的證明。
+- `exact_duplicates: propose` 只允許列出候選項目供審查；任何刪除或覆寫仍需逐項明確確認。
 - 後續執行應說明哪些儲存偏好影響了計畫。
