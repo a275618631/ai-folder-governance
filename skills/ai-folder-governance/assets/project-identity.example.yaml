@@ -1,0 +1,18 @@
+schema_version: 1
+
+project_id: my-project
+display_name: My Project
+
+human_workspace:
+  provider: document-provider
+  locator: private-value
+
+machine_workspace:
+  provider: git-host
+  repository: owner/repository
+
+sources_of_truth:
+  code: machine
+  tests: machine
+  decisions: human
+  briefs: human

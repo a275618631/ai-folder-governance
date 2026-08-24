@@ -1,0 +1,13 @@
+# Local preferences and generated reports
+.ai-folder-governance.yaml
+*.organization-report.md
+*.change-ledger.md
+
+# Runtime and editor noise
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.idea/
+.vscode/

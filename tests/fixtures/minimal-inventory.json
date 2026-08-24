@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "target": "example-folder",
+  "mode": "SHALLOW_ORGANIZE",
+  "items": [
+    {
+      "path": "working/draft.md",
+      "classification": "working",
+      "confidence": "high",
+      "action": "no-op"
+    },
+    {
+      "path": "review/final.pdf",
+      "classification": "unresolved",
+      "confidence": "low",
+      "action": "needs-review"
+    }
+  ]
+}

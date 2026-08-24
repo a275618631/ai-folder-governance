@@ -1,0 +1,21 @@
+version: 1
+
+organization:
+  depth: recursive
+  structure_policy: preserve-first
+
+archive:
+  strategy: semantic
+
+delete:
+  mode: confirm
+  exact_duplicates: allow
+
+naming:
+  language: keep
+  date_prefix: when-useful
+  style: descriptive
+
+safety:
+  secret_black_box: true
+  check_path_dependencies: true
