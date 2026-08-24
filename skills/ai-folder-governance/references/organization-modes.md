@@ -12,7 +12,7 @@ Inspect only new or recently changed items within an explicit set of folders. Co
 
 ## `RECURSIVE_DEEP_ORGANIZE`
 
-Inspect the full recursive tree under one approved target. Use when relationships, nested structure, or canonical-source evidence cannot be understood at a shallower depth. Ask before expanding beyond the target.
+Inspect the full recursive tree under one approved target. Recursive inspection is allowed inside that target, but never outside it. Do not follow external links or enter another workspace without explicit approval. Use when relationships, nested structure, or canonical-source evidence cannot be understood at a shallower depth.
 
 ## `PROJECT_LIFECYCLE_REVIEW`
 
@@ -20,4 +20,4 @@ Review project identity, ownership, source-of-truth boundaries, cross-references
 
 ## Mode selection output
 
-Report the selected mode, why it is sufficient, the boundary it creates, and what it intentionally excludes. If a deeper mode would reduce uncertainty, ask before switching.
+Report the selected mode, why it is sufficient, the boundary it creates, and what it intentionally excludes. For recursive mode, state that recursion stops at the target boundary. If a deeper mode would reduce uncertainty, ask before switching.

@@ -2,6 +2,10 @@
 
 Use this prompt to review project identities and lifecycle status without immediately merging, archiving, or deleting anything.
 
+**English:** Copy only the language section you intend to use.
+
+**繁中：** 實際交給 Agent 時，只需複製你要使用的語言區段，不需要同時貼英文與中文。
+
 ## English prompt
 
 Review the explicitly listed project roots `<PROJECTS>` using `PROJECT_LIFECYCLE_REVIEW`.

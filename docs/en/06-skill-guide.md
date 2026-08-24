@@ -2,6 +2,8 @@
 
 The included Skill is an entry point for Agent Skills-compatible runtimes. It is intentionally concise so an agent can load detailed guidance progressively.
 
+The package follows the [Agent Skills specification](https://agentskills.io/specification). The official format defines a Skill as a folder centered on `SKILL.md`, with optional resources such as references and assets.
+
 ## Package shape
 
 ```text
@@ -33,6 +35,8 @@ Do not load every reference for every request. The references are the maintained
 ## Runtime expectations
 
 The Skill does not assume a particular provider, shell, filesystem API, or language. The host agent must translate the read-only inspection, approval, execution, and validation steps into its available tools. If a required capability is unavailable, report the limitation and do not simulate success.
+
+Use [Runtime capabilities](08-runtime-capabilities.md) to distinguish `Tested`, `Designed for`, and `Format compatible`. This repository does not claim that all agents are supported.
 
 ## Testing a Skill change
 

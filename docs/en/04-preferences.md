@@ -19,6 +19,7 @@ Do not ask every user every question on every run.
 | Depth | `current`, `one-level`, `recursive` | The requested boundary is not explicit. |
 | Archive | `keep-in-place`, `archive`, `ask-per-item` | Older or historical items need a lifecycle decision. |
 | Delete | `confirm` by default | Any deletion or overwrite is proposed. |
+| Exact duplicates | `propose` by default | A duplicate candidate needs a review decision; proposal is not permission to delete. |
 | Naming language | `keep`, a chosen language | A rename is necessary and language affects findability. |
 | Date prefix | `never`, `when-useful`, `always` | A rename is necessary and dates improve retrieval. |
 | Naming style | `concise`, `descriptive` | A rename is necessary and both styles are plausible. |
@@ -39,7 +40,7 @@ archive:
 
 delete:
   mode: confirm
-  exact_duplicates: allow
+  exact_duplicates: propose
 
 naming:
   language: keep
@@ -59,4 +60,5 @@ An agent may suggest saving the configuration after the first review. The user s
 - Invalid values should stop planning for the affected preference.
 - Safety keys are assertions, not switches; setting them false must not disable the corresponding invariant.
 - A preference file is not proof of authority, ownership, or permission to delete.
+- `exact_duplicates: propose` only allows candidates to be listed for review. Any delete or overwrite still needs explicit, item-specific confirmation.
 - A later run should explain which saved preference affected the plan.

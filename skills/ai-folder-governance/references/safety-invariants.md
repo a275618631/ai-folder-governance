@@ -28,7 +28,7 @@ Do not infer authority from recency, file size, visual polish, or a filename suc
 
 ## Destructive actions
 
-Deletion and overwrite require explicit, item-specific confirmation. A duplicate candidate can be reported or archived, but similarity alone is not deletion approval.
+Deletion and overwrite require explicit, item-specific confirmation. A duplicate candidate can be reported, proposed for review, or archived when approved, but `propose` is not delete permission. Similarity alone is never deletion approval.
 
 ## Scope drift and failure
 

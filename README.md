@@ -56,6 +56,27 @@ Copy [skills/ai-folder-governance](skills/ai-folder-governance/) into the skills
 
 Use [05-project-workspace-governance](prompts/05-project-workspace-governance.md) when one project spans a human workspace and a machine workspace such as a document provider and a Git repository. This module is optional; no provider is required.
 
+## Which path should I use?
+
+| If you... | Use | Result |
+| --- | --- | --- |
+| just want to organize a folder | [Copy a Prompt](prompts/) | A standalone workflow you can paste into an agent. |
+| use an agent frequently | [Install the Skill](skills/ai-folder-governance/) | Progressive, reusable guidance with references. |
+| have documents plus Git/code for one project | [Project Workspace Governance](prompts/05-project-workspace-governance.md) | Stable identity and source-of-truth coordination across workspaces. |
+
+## Runtime capability at a glance
+
+| Capability | Scan | Plan | Execute | Validate |
+| --- | --- | --- | --- | --- |
+| Chat only | User-provided inventory | Yes | No | Report-based only |
+| User-provided inventory | Provided evidence | Yes | No | Compare provided evidence |
+| Read-only filesystem | Yes | Yes | No | Re-scan read-only |
+| Read/write filesystem | Yes | Yes | Approved changes | Yes |
+| Remote workspace connector | If connector allows | Yes | Only with connector write access and approval | Connector readback |
+| Git + filesystem | Yes | Yes | Approved file changes; Git actions remain separate | Filesystem plus Git checks |
+
+See [Runtime capabilities](docs/en/08-runtime-capabilities.md) for the distinction between tested and designed capabilities.
+
 ## Quick Start
 
 Paste this into an agent that can inspect the target folder:
@@ -72,9 +93,9 @@ execution, report post-condition checks and any items left untouched.
 
 For a repeatable workflow, use the full [prompt pack](prompts/) or the Skill.
 
-## Before / After example
+## Evidence-led example
 
-Before:
+### Before
 
 ```text
 project-notes/
@@ -84,7 +105,22 @@ project-notes/
 └── links.txt
 ```
 
-After a preserve-first plan is approved:
+### Observed evidence
+
+- `notes-new.md` contains active working material.
+- `links.txt` is a reference candidate.
+- `final-notes.md` and `export-2.pdf` have unclear authority.
+- No deletion is justified by filenames alone.
+
+### Dry-run proposal
+
+Propose `working/notes-new.md` and `reference/links.txt`. Keep the two review candidates in place until authority and path dependencies are resolved. The folder names below are a proposal, not a framework taxonomy.
+
+### User decision
+
+Approve the two low-risk moves, leave the review candidates untouched, and do not delete anything.
+
+### After
 
 ```text
 project-notes/
@@ -98,7 +134,7 @@ project-notes/
     └── export-2.pdf
 ```
 
-The agent should explain why `final-notes.md` remains in review when its authority is not proven. A confident filename is not proof of canonical status.
+The exact structure depends on evidence and user preferences. A confident filename is not proof of canonical status.
 
 ## Safety
 
@@ -119,7 +155,7 @@ The framework does not force one folder taxonomy. Start with read-only inspectio
 - restructure level: `preserve-first`, `moderate`, or `redesign`;
 - depth: `current`, `one-level`, or `recursive`;
 - archive strategy: keep in place, archive, or ask per item;
-- deletion: confirm before destructive deletion by default;
+- deletion: confirm before destructive deletion by default; exact duplicates are proposed for review, not auto-deleted;
 - naming: ask about language, date prefix, or style only when renaming is actually needed.
 
 Preferences may be saved in an optional `.ai-folder-governance.yaml`; safety invariants cannot be disabled by configuration.
@@ -149,10 +185,11 @@ scripts/                 Dependency-free validation
 - [Prompt guide](docs/en/05-prompt-guide.md) · [Prompt 指南](docs/zh-TW/05-prompt-guide.md)
 - [Skill guide](docs/en/06-skill-guide.md) · [Skill 指南](docs/zh-TW/06-skill-guide.md)
 - [Project workspaces](docs/en/07-project-workspaces.md) · [專案工作區](docs/zh-TW/07-project-workspaces.md)
+- [Runtime capabilities](docs/en/08-runtime-capabilities.md) · [Runtime 能力](docs/zh-TW/08-runtime-capabilities.md)
 
 ## Compatibility and validation
 
-The prompts are provider-neutral. The Skill follows the current Agent Skills file shape: a folder with a `SKILL.md`, YAML front matter, and optional references and assets. The repository validator uses only Python's standard library:
+The prompts are provider-neutral. The Skill follows the [Agent Skills specification](https://agentskills.io/specification): a folder with a `SKILL.md`, YAML front matter, and optional references and assets. The repository validator uses only Python's standard library and checks repository structure, local documentation links, Skill package shape, regression-specification presence, and basic publication-safety patterns. It is not a replacement for GitHub secret scanning, a dedicated security scanner, manual security review, or behavioral AI evaluation.
 
 ```bash
 python3 scripts/validate_repo.py

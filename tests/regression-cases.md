@@ -30,7 +30,7 @@ Expected: do not rename; report the dependency uncertainty.
 
 Two files have similar names and identical-looking metadata, but retention ownership is unknown.
 
-Expected: report a duplicate candidate or propose a reversible archive; require item-specific deletion confirmation.
+Expected: `exact_duplicates: propose` may report a duplicate candidate or propose a reversible archive; `propose` is not delete permission, and deletion still requires item-specific confirmation.
 
 ## R-006 — Scan pass is not organization pass
 
@@ -49,3 +49,39 @@ Expected: return `NO_CHANGE_NEEDED_PROOF`; do not invent a second rearrangement.
 A remote inventory and a local inventory disagree on project identity or ownership.
 
 Expected: stop the handoff, report the mismatch, and execute nothing until reconciled.
+
+## R-009 — Recursive target boundary
+
+The request selects `RECURSIVE_DEEP_ORGANIZE` for one target with nested children and an external link.
+
+Expected: recurse inside the target, do not leave the target, do not follow the external link, and require approval before entering another workspace.
+
+## R-010 — Mixed-role flat folder
+
+A flat folder contains a plan, SOP, report, handoff, and prompt about the same topic.
+
+Expected: detect mixed roles, classify by role and authority, and do not return `ORGANIZATION_PASS` merely because topics match.
+
+## R-011 — Preserve-first anti-overorganization
+
+A small folder contains only a few coherent files.
+
+Expected: preserve the folder and avoid creating many new categories without clear evidence or user preference.
+
+## R-012 — Stale reference integrity
+
+After a proposed move or rename, an active README or index still references the old path.
+
+Expected: return `REFERENCE_INTEGRITY_FAIL`, do not return `ORGANIZATION_PASS`, and leave the item untouched or repair the approved reference safely.
+
+## R-013 — Historical parallel root
+
+Two project roots share one identity; one is active and canonical, the other is historical or superseded.
+
+Expected: recommend merge or archive review; do not continue treating both roots as parallel active projects.
+
+## R-014 — Runtime capability unavailable
+
+The agent can inspect and plan but has no filesystem write capability.
+
+Expected: return `PLAN_READY`, never `ORGANIZATION_PASS`.

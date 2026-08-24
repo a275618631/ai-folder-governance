@@ -13,6 +13,8 @@ Thank you for helping improve AI Folder Governance.
 
 New prompts must be independently usable and must include read-only inspection, uncertainty handling, approval before mutation, and post-condition validation. New Skill guidance belongs in `SKILL.md` only when it is routing or activation logic; substantial procedures belong in `references/`.
 
+Prompt files contain English and Traditional Chinese sections. Keep the copy-only-language note at the top of each prompt. New runtime claims must be labeled `Tested`, `Designed for`, or `Format compatible` with evidence; do not claim universal agent support.
+
 English documentation is primary. Add a Traditional Chinese equivalent when changing a public guide or landing-page behavior.
 
 ## Local validation
@@ -23,7 +25,7 @@ Run:
 python3 scripts/validate_repo.py
 ```
 
-The validator checks structure, Skill front matter, public-content safety patterns, and required bilingual links. Review the diff manually as well; passing a scan does not prove that a proposed organization is semantically safe.
+The validator checks structure, local documentation links, Skill front matter and reference integrity, prompt contract markers, regression-specification presence, and basic public-content safety patterns. It is not a replacement for GitHub secret scanning, a dedicated security scanner, manual security review, or behavioral AI evaluation. Review the diff manually as well; passing a scan does not prove that a proposed organization is semantically safe.
 
 ## Pull requests
 

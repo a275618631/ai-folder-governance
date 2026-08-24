@@ -2,6 +2,8 @@
 
 The prompt pack is designed for agents that can inspect a filesystem, a connected document workspace, or a user-provided inventory. Each prompt can be used without the Skill.
 
+At the top of every prompt, the English and Traditional Chinese sections explain that you should copy only the language section you intend to use.
+
 ## Choose a prompt
 
 | Prompt | Use it when |
@@ -34,3 +36,5 @@ Provide the target description, relevant preferences, and the smallest useful in
 ## Reviewing a response
 
 A useful response has four separate sections: inventory, reasoning and uncertainty, proposed change set, and validation report. Reject a response that jumps directly to “done,” hides assumptions, or treats a filename as proof of canonical status.
+
+If the host runtime cannot write or independently validate, the prompt should stop at `PLAN_READY` and state the missing capability.

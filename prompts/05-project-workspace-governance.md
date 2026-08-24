@@ -2,12 +2,18 @@
 
 Use this optional advanced prompt when one project spans a human workspace and a machine workspace.
 
+**English:** Copy only the language section you intend to use.
+
+**繁中：** 實際交給 Agent 時，只需複製你要使用的語言區段，不需要同時貼英文與中文。
+
 ## English prompt
 
 Govern `<PROJECT_ID>` across:
 
 - Human Workspace: `<HUMAN_WORKSPACE>`
 - Machine Workspace: `<MACHINE_WORKSPACE>`
+
+Scope is limited to these two explicitly named workspaces and their documented references.
 
 The providers are implementation details. Do not assume a particular vendor, URL shape, or integration.
 

@@ -56,6 +56,27 @@ flowchart LR
 
 當一個專案同時跨越人類工作區與機器工作區，例如文件提供者與 Git Repository，可使用 [05-project-workspace-governance](prompts/05-project-workspace-governance.md)。這是選用模組，不要求特定提供者。
 
+## 我應該選哪一條路？
+
+| 如果你…… | 使用 | 結果 |
+| --- | --- | --- |
+| 只想整理一個資料夾 | [複製 Prompt](prompts/) | 可以直接貼給 Agent 的獨立流程。 |
+| 經常使用 Agent | [安裝 Skill](skills/ai-folder-governance/) | 具備 references 的漸進式、可重複指引。 |
+| 一個專案同時有文件與 Git／程式碼 | [Project Workspace Governance](prompts/05-project-workspace-governance.md) | 跨工作區的穩定 identity 與 source-of-truth 協調。 |
+
+## Runtime 能力速查
+
+| 能力 | Scan | Plan | Execute | Validate |
+| --- | --- | --- | --- | --- |
+| 只有聊天 | 使用者提供 inventory | 可以 | 不可以 | 只能依報告判斷 |
+| 使用者提供 inventory | 使用提供的證據 | 可以 | 不可以 | 比對提供的證據 |
+| 唯讀檔案系統 | 可以 | 可以 | 不可以 | 唯讀重掃 |
+| 可讀寫檔案系統 | 可以 | 可以 | 已核准變更 | 可以 |
+| 遠端工作區 connector | 視 connector 能力 | 可以 | 需寫入能力與核准 | connector 回讀 |
+| Git + 檔案系統 | 可以 | 可以 | 已核准檔案變更；Git 動作另行處理 | 檔案系統加 Git 檢查 |
+
+詳見 [Runtime 能力](docs/zh-TW/08-runtime-capabilities.md)，區分實測能力與設計上相容能力。
+
 ## 快速開始
 
 把以下內容貼給能夠檢視目標資料夾的 Agent：
@@ -70,9 +91,9 @@ flowchart LR
 
 若要使用可重複的流程，請使用完整的 [Prompt Pack](prompts/) 或 Skill。
 
-## 整理前後範例
+## 以證據為主的範例
 
-整理前：
+### 整理前
 
 ```text
 project-notes/
@@ -82,7 +103,22 @@ project-notes/
 └── links.txt
 ```
 
-在 preserve-first 計畫獲得核准後：
+### 觀察到的證據
+
+- `notes-new.md` 是目前的 working material。
+- `links.txt` 是 reference candidate。
+- `final-notes.md` 與 `export-2.pdf` 的權威性不明。
+- 不能只靠檔名證明需要刪除。
+
+### Dry-run 提案
+
+提議 `working/notes-new.md` 與 `reference/links.txt`。在權威性與路徑相依性釐清前，讓兩個 review candidate 留在原處。下面的資料夾名稱是提案，不是框架硬編的 taxonomy。
+
+### 使用者決定
+
+核准兩個低風險移動，讓 review candidate 維持不動，且不刪除任何內容。
+
+### 整理後
 
 ```text
 project-notes/
@@ -96,7 +132,7 @@ project-notes/
     └── export-2.pdf
 ```
 
-如果無法證明 `final-notes.md` 是權威來源，Agent 應說明為什麼把它留在 review。自信的檔名不是 canonical 狀態的證明。
+實際結構取決於證據與使用者偏好。自信的檔名不是 canonical 狀態的證明。
 
 ## 安全性
 
@@ -117,7 +153,7 @@ project-notes/
 - 重整程度：`preserve-first`、`moderate` 或 `redesign`；
 - 深度：`current`、`one-level` 或 `recursive`；
 - 封存策略：留在原處、封存，或逐項詢問；
-- 刪除：預設刪除前確認；
+- 刪除：預設刪除前確認；完全重複只能提出候選，不自動刪除；
 - 命名：只有真的需要改名時，才詢問語言、日期前綴或風格。
 
 偏好可以儲存在選用的 `.ai-folder-governance.yaml`；安全不變量不能由設定關閉。
@@ -147,10 +183,11 @@ scripts/                 無第三方依賴的驗證工具
 - [Prompt guide](docs/en/05-prompt-guide.md) · [Prompt 指南](docs/zh-TW/05-prompt-guide.md)
 - [Skill guide](docs/en/06-skill-guide.md) · [Skill 指南](docs/zh-TW/06-skill-guide.md)
 - [Project workspaces](docs/en/07-project-workspaces.md) · [專案工作區](docs/zh-TW/07-project-workspaces.md)
+- [Runtime capabilities](docs/en/08-runtime-capabilities.md) · [Runtime 能力](docs/zh-TW/08-runtime-capabilities.md)
 
 ## 相容性與驗證
 
-Prompt 不綁定任何提供者。Skill 遵循目前 Agent Skills 的檔案形狀：包含 `SKILL.md`、YAML front matter，以及選用的 references 與 assets。Repository validator 只使用 Python 標準函式庫：
+Prompt 不綁定任何提供者。Skill 遵循 [Agent Skills specification](https://agentskills.io/specification)：包含 `SKILL.md`、YAML front matter，以及選用的 references 與 assets。Repository validator 只使用 Python 標準函式庫，檢查結構、本機文件連結、Skill 套件形狀、回歸規格存在性與基本 publication-safety pattern；它不是 GitHub secret scanning、專用安全掃描器、人工安全審查或 AI 行為評估的替代品。
 
 ```bash
 python3 scripts/validate_repo.py

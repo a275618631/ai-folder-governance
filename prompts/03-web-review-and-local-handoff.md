@@ -2,6 +2,10 @@
 
 Use this prompt when a web-capable agent can review a remote workspace but a local agent must perform filesystem execution. The two agents share a result packet, not credentials or hidden session state.
 
+**English:** Copy only the language section you intend to use.
+
+**繁中：** 實際交給 Agent 時，只需複製你要使用的語言區段，不需要同時貼英文與中文。
+
 ## English prompt
 
 ### Web reviewer
