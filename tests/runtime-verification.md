@@ -7,7 +7,7 @@ This record documents the fixture-backed checks performed for v0.1.1. It is not 
 - Runtime: Codex desktop runtime in the current implementation session
 - Date: 2026-08-24
 - Fixture: `examples/end-to-end-project/` and the fictional regression specifications
-- Commit: recorded at release preparation time
+- Commit under test: `316f957` (functional hardening commit; this record-only update follows it)
 - Method: manual, deterministic scenario checks against the documented workflow
 - Limitation: this verifies governance behavior and reporting decisions; it does not exercise a third-party cloud connector or a real user's files
 
