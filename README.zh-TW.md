@@ -118,18 +118,18 @@ project-notes/
 
 核准兩個低風險移動，讓 review candidate 維持不動，且不刪除任何內容。
 
+整理後的狀態只能包含已出現在核准 change set 中的變更；未經核准的「順手整理」屬於 scope drift。
+
 ### 整理後
 
 ```text
 project-notes/
-├── 00-index.md
+├── final-notes.md
+├── export-2.pdf
 ├── working/
 │   └── notes-new.md
-├── reference/
+└── reference/
 │   └── links.txt
-└── review/
-    ├── final-notes.md
-    └── export-2.pdf
 ```
 
 實際結構取決於證據與使用者偏好。自信的檔名不是 canonical 狀態的證明。

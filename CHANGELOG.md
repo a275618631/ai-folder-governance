@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## 0.1.2 — 2026-08-24
+
+- Corrected the README evidence-led example so the final state contains only explicitly approved changes.
+- Clarified that unapproved cleanup is scope drift.
+
 ## 0.1.1 — 2026-08-24
 
 - Clarified recursive scope: recursion is allowed inside the approved target and forbidden outside it without approval.

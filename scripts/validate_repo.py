@@ -191,7 +191,7 @@ def check_prompt_contract() -> None:
 
 def check_regression_coverage() -> None:
     content = read("tests/regression-cases.md")
-    for number in range(1, 15):
+    for number in range(1, 16):
         marker = f"## R-{number:03d}"
         if marker not in content:
             fail(f"missing regression specification: {marker}")
@@ -316,7 +316,7 @@ def main() -> int:
     check_reachable_history()
     print(
         "Validation passed: structure, local links, Skill contract, prompt contract, "
-        "R-001..R-014 coverage, fixture, and publication safety scan."
+        "R-001..R-015 coverage, fixture, and publication safety scan."
     )
     return 0
 
