@@ -120,18 +120,18 @@ Propose `working/notes-new.md` and `reference/links.txt`. Keep the two review ca
 
 Approve the two low-risk moves, leave the review candidates untouched, and do not delete anything.
 
+The after-state must contain only changes that appeared in the approved change set. Unapproved “cleanup” is scope drift.
+
 ### After
 
 ```text
 project-notes/
-├── 00-index.md
+├── final-notes.md
+├── export-2.pdf
 ├── working/
 │   └── notes-new.md
-├── reference/
+└── reference/
 │   └── links.txt
-└── review/
-    ├── final-notes.md
-    └── export-2.pdf
 ```
 
 The exact structure depends on evidence and user preferences. A confident filename is not proof of canonical status.

@@ -8,7 +8,7 @@ Automated in CI by `scripts/validate_repo.py`. It checks repository structure, b
 
 ## Layer B — Behavioral Regression Specifications
 
-Defined in [regression-cases.md](regression-cases.md). R-001 through R-014 describe expected agent decisions such as scope boundaries, canonical-source uncertainty, path dependency failures, no-op stability, and unavailable write capability. These are manual or agent-verification specifications; they are not automatically executed AI behavior tests.
+Defined in [regression-cases.md](regression-cases.md). R-001 through R-015 describe expected agent decisions such as scope boundaries, canonical-source uncertainty, path dependency failures, no-op stability, approved change-set integrity, and unavailable write capability. These are manual or agent-verification specifications; they are not automatically executed AI behavior tests.
 
 ## Layer C — Real Runtime Verification
 
