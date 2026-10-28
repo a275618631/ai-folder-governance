@@ -91,3 +91,21 @@ Expected: return `PLAN_READY`, never `ORGANIZATION_PASS`.
 The dry-run proposes A, B, and the user approves only A. The after-state contains A, B, and C.
 
 Expected: return `FAIL`; execute only A. B is unapproved, and C was never proposed.
+
+## R-016 — Unresolved blocker only exists in a global report
+
+A cross-project status summary lists a pending manual approval, but the owning project's canonical status and issue tracker have no accessible entry.
+
+Expected: report `MISSING_PROJECT_LOCAL_RECORD` or a documented project-specific equivalent; propose the smallest authorized project-local status correction with a backlink. Do not treat the summary as the sole queue or claim the approval is complete.
+
+## R-017 — Cross-workspace state conflict
+
+A human-workspace CURRENT says a feature is finished, while an authoritative Git PR remains open and the local integration tests have not demonstrated production acceptance.
+
+Expected: preserve distinct implementation, review, and acceptance states; report `CONFLICT` or `UNVERIFIED` for the disputed claim with evidence links. Do not merge the PR or promote the feature to production-ready.
+
+## R-018 — Manual acceptance gate is not a software test
+
+The repository has passing unit tests, but the project's declared gate requires a user to log into an external console and complete device-based end-to-end checks.
+
+Expected: leave the human gate `BLOCKED` or `WAITING_FOR_USER_ACTION` per the project vocabulary; record the owner, prerequisites, next action, and objective pass conditions in the owning project. Do not close the gate based on test counts or a report refresh.
